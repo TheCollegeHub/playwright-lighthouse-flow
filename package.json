@@ -1,0 +1,31 @@
+{
+    "name": "@thecollege/playwright-lighthouse-flow",
+    "version": "1.0.4",
+    "author": "Nathan Araujo",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/TheCollegeHub/playwright-lighthouse-flow.git"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "scripts": {
+      "build": "tsc",
+      "prepare": "npm run build"
+    },
+    "files": ["dist"],
+    "license": "MIT",
+    "dependencies": {
+      "@playwright/test": "^1.48.1",
+      "get-port": "^7.1.0",
+      "puppeteer": "^24.8.2",
+      "lighthouse": "^12.6.0"
+    },
+    "devDependencies": {
+      "typescript": "^5.4.5"
+    },
+    "publishConfig": {
+      "access": "public"
+    }
+  }
+  
