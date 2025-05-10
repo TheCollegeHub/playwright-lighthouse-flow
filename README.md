@@ -175,12 +175,6 @@ Ensure your `tsconfig.json` is set to output ES modules:
 
 ---
 
-## License
-
-MIT © 2025 [The College](https://bythecollege.com)
-
----
-
 ## Author
 
 Developed by [Nathan Araujo](https://github.com/araujosnathan) to simplify performance auditing during E2E tests with Lighthouse Flow. 
