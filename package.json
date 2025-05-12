@@ -1,6 +1,6 @@
 {
     "name": "@thecollege/playwright-lighthouse-flow",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "author": "Nathan Araujo",
     "repository": {
       "type": "git",

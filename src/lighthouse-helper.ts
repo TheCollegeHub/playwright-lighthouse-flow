@@ -120,6 +120,12 @@ export function assertLighthouseFlowResultThresholds(flowResult: FlowResult, thr
                 continue;
             }
 
+            const allAuditsWeightZero = categoryData.auditRefs?.every(ref => ref.weight === 0);
+            if ((categoryData.score ?? 0) === 0 && allAuditsWeightZero) {
+                console.warn(`⚠️ Skipping "${category}" in step "${stepName}" — all audits have zero weight.`);
+                continue;
+            }
+
             const { score, title } = categoryData;
 
             expect.soft(score).not.toBeNull();
@@ -138,6 +144,7 @@ export function assertLighthouseFlowResultThresholds(flowResult: FlowResult, thr
         }
     }
 }
+
 
 
   
