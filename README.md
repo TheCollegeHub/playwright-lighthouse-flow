@@ -10,6 +10,7 @@ This utility enables integration of [Google Lighthouse](https://github.com/Googl
 - Authenticated flows supported via custom login functions.
 - Generates `.html` and `.json` Lighthouse reports per test.
 - Output organized by test name and timestamp.
+- Compare Flow Results to see Diffs between executions
 
 ---
 
@@ -165,6 +166,32 @@ Ensure your `tsconfig.json` is set to output ES modules:
 ```
 
 ---
+
+# Using the Lighthouse Flow Comparator CLI
+
+After installing this package globally or locally, you can run the CLI to compare two Lighthouse Flow JSON result files.
+
+---
+
+## Running the CLI
+
+### If installed globally:
+
+```bash
+lighthouse-compare path/to/flow-result1.json path/to/flow-result2.json
+```
+It will create a HTML with some Diffs and open it.
+The HTML file will be create in `lighthouse-reports` folder.
+
+Lighthouse Comparison Summary
+
+![Lighthouse Comparison Summary](./imgs/img_1.png)
+
+
+Step Detail
+
+![Step Detail](./imgs/img_2.png)
+
 
 ## Requirements
 
