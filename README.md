@@ -180,6 +180,12 @@ After installing this package globally or locally, you can run the CLI to compar
 ```bash
 lighthouse-compare path/to/flow-result1.json path/to/flow-result2.json
 ```
+
+### If installed locally (inside a project):
+```bash
+npx lighthouse-compare path/to/flow-result1.json path/to/flow-result2.json
+```
+
 It will create a HTML with some Diffs and open it.
 The HTML file will be create in `lighthouse-reports` folder.
 
