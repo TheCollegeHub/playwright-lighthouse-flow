@@ -93,7 +93,9 @@ export async function connectToLighthouseFlow({ port, config, route, flowName }:
     const pBrowser = await puppeteer.connect({ browserURL });
 
     const allPages = await pBrowser.pages();
-    const pPage = allPages.find((page) => page.url().includes(route)) || allPages[0];
+    const pPage = allPages.find((page) => page.url().includes(route));
+    if (!pPage) throw new Error(`No page found with route: ${route}`);
+
 
     const flow = await startFlow(pPage, {
         name: flowName,

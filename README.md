@@ -14,6 +14,64 @@ This utility enables integration of [Google Lighthouse](https://github.com/Googl
 
 ---
 
+---
+
+# How @thecollege/playwright-lighthouse-flow Enables Using Lighthouse Flow Mode with Playwright
+
+The package `@thecollege/playwright-lighthouse-flow` bridges Playwright’s browser automation with Lighthouse’s **Flow Mode**, allowing you to run multi-step performance audits on real user flows. Here’s how it works:
+
+---
+
+## Key Mechanisms
+
+### 1. Reusing the Same Browser Instance with Remote Debugging
+
+- Lighthouse Flow Mode requires connecting to a Chromium browser via the Chrome DevTools Protocol (CDP) to gather detailed metrics across multiple user interactions.
+- The package launches Chromium through Playwright **with remote debugging enabled** on a dynamic port.
+- This setup lets Lighthouse connect to the **same browser session** Playwright controls, preserving authentication, cookies, and page state across steps.
+
+### 2. Coordinating Playwright Actions with Lighthouse Flow Steps
+
+- The package exposes helpers to create and manage Lighthouse **User Flows** (`startFlow`), which represent sequences of user interactions.
+- You can define steps such as:
+  - **Navigation** (page loads)
+  - **Timespan** (periods of user activity)
+  - **Snapshot** (point-in-time captures)
+- These steps wrap Playwright actions, ensuring Lighthouse collects performance data exactly during your scripted interactions.
+
+### 3. Handling Authentication and Complex User Journeys
+
+- Since Playwright controls the browser context, you can perform login and setup steps **before** starting the Lighthouse flow.
+- This enables auditing authenticated pages and complex flows that Lighthouse alone cannot handle.
+
+### 4. Generating Detailed Reports and Assertions
+
+- The package automates generating `.html` and `.json` Lighthouse reports per flow, organized by test name and timestamp.
+- It provides utilities to assert Lighthouse category scores at each step, supporting automated performance regression testing.
+
+### 5. Abstracting Chrome DevTools Protocol (CDP) Session Management
+
+- Internally, Puppeteer connects Lighthouse to the Playwright-controlled browser via the remote debugging port.
+- This abstracts away the complexity of managing CDP sessions, ensuring seamless integration even as Playwright and Lighthouse evolve.
+
+---
+
+## Summary
+
+| Feature                          | Description                                                                                     |
+|---------------------------------|-------------------------------------------------------------------------------------------------|
+| **Remote debugging port**        | Connects Lighthouse and Playwright to the same browser instance                                |
+| **User Flow API**                | Maps Lighthouse flow steps to Playwright actions                                               |
+| **Authentication support**      | Enables auditing of logged-in user journeys                                                    |
+| **Report generation & validation** | Automates creation of reports and score assertions                                             |
+| **CDP session handling**        | Simplifies communication between Lighthouse and Playwright under the hood                      |
+
+---
+
+This integration leverages Playwright’s powerful automation and Lighthouse’s advanced multi-step auditing to deliver accurate, actionable insights into real user experiences on your web app.
+
+---
+
 ## Installation
 
 ```bash
@@ -205,7 +263,3 @@ Step Detail
 - Remote debugging enabled in `launchPersistentContext`
 
 ---
-
-## Author
-
-Developed by [Nathan Araujo](https://github.com/araujosnathan) to simplify performance auditing during E2E tests with Lighthouse Flow. 
