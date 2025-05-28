@@ -341,7 +341,7 @@ function generateTimelineHTML(steps: { name: string; categoryDiffs: Record<strin
               const color = trendColor(val.trend);
               const bg = scoreColor(val.after);
               return `<td style="text-align:center; vertical-align:middle;">
-          <a href="step-${i}.html" class="cat-cell" style="border-left: 8px solid ${bg};">
+          <a href="step-${i + 1}.html" class="cat-cell" style="border-left: 8px solid ${bg};">
             <span style="color:${scoreColor(val.before)}">${before}</span>
             <span style="font-size:1.2em;vertical-align:middle;">→</span>
             <span style="color:${scoreColor(val.after)}">${after}</span>

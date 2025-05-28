@@ -1,9 +1,8 @@
 import { test as base, BrowserContext, Page, chromium, expect } from '@playwright/test';
-import getPort from 'get-port';
 import path from 'path';
 import os from 'os';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { Config, FlowResult, startFlow, UserFlow } from 'lighthouse';
+import { startFlow, type Config, type FlowResult, type UserFlow } from './lighthouse-wrapper'
 import puppeteer from 'puppeteer';
 
 interface LighthouseFixtures {
@@ -33,6 +32,7 @@ export function createLighthouseTest(authOptions: AuthOptions) {
     return base.extend<LighthouseFixtures, WorkerFixtures>({
         port: [
             async ({}, use) => {
+                const { default: getPort } = await import('get-port');
                 const port = await getPort();
                 await use(port);
             },

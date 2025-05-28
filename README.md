@@ -20,8 +20,6 @@ This utility enables integration of [Google Lighthouse](https://github.com/Googl
 npm install @thecollege/playwright-lighthouse-flow
 ```
 
-> ⚠️ This library assumes your project is using ESModules (`"type": "module"` or `module: "ESNext"` in `tsconfig.json`).
-
 ---
 
 ## Usage
