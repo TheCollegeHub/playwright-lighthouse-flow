@@ -23,6 +23,7 @@ interface LighthouseFlowOptions {
     config: Config;
     route: string;
     flowName: string;
+    browserURL?: string;
 }
 
 type Thresholds = Partial<Record<string, number>>;
@@ -88,9 +89,9 @@ export const generateLighthouseReportUsingFlow = async (
     return flowResult;
   };
 
-export async function connectToLighthouseFlow({ port, config, route, flowName }: LighthouseFlowOptions): Promise<UserFlow> {
-    const browserURL = `http://localhost:${port}`;
-    const pBrowser = await puppeteer.connect({ browserURL });
+export async function connectToLighthouseFlow({ port, config, route, flowName, browserURL }: LighthouseFlowOptions): Promise<UserFlow> {
+    const url = browserURL || `http://127.0.0.1:${port}`;
+    const pBrowser = await puppeteer.connect({ browserURL: url });
 
     const allPages = await pBrowser.pages();
     const pPage = allPages.find((page) => page.url().includes(route));

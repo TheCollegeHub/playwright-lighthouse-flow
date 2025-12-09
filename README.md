@@ -1,7 +1,18 @@
 
 # @thecollege/playwright-lighthouse-flow
 
+<p align="center">
+  <img src="https://github.com/TheCollegeHub/playwright-lighthouse-flow/blob/main/pw-lh-flow-logo.png" width="400" style="height: auto; display: block; margin: 0 auto;">
+</p>
+
+
+[![npm version](https://badge.fury.io/js/@thecollege%2Fplaywright-lighthouse-flow.svg)](https://badge.fury.io/js/@thecollege%2Fplaywright-lighthouse-flow)
+[![npm downloads](https://img.shields.io/npm/dm/@thecollege/playwright-lighthouse-flow.svg)](https://www.npmjs.com/package/@thecollege/playwright-lighthouse-flow)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This utility enables integration of [Google Lighthouse](https://github.com/GoogleChrome/lighthouse) — using its **Flow Mode** — with [Playwright](https://playwright.dev/). It helps generate performance reports during your end-to-end testing flows with minimal effort.
+
+**[View Changelog](./CHANGELOG.md)** - See what's new and what's been fixed
 
 ## Features
 
@@ -203,6 +214,30 @@ lighthouse-reports/
 ---
 
 ## Configuration Tips
+
+### Browser URL Configuration
+
+By default, the library connects to the browser using `http://127.0.0.1:${port}`. If you need to use a different URL (e.g., `localhost` or a custom hostname), you can specify the `browserURL` option:
+
+```ts
+const flow = await connectToLighthouseFlow({
+  port,
+  config: {
+    extends: 'lighthouse:default',
+    settings: {
+      screenEmulation: { disabled: true },
+      formFactor: 'desktop'
+    }
+  },
+  route: '/dashboard',
+  flowName: 'Dashboard Flow',
+  browserURL: `http://localhost:${port}` // Optional: custom browser URL
+});
+```
+
+**Note:** Using `127.0.0.1` instead of `localhost` resolves connection issues on some systems where DNS resolution may fail.
+
+### TypeScript Configuration
 
 Ensure your `tsconfig.json` is set to output ES modules:
 
