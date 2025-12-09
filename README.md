@@ -12,7 +12,7 @@
 
 This utility enables integration of [Google Lighthouse](https://github.com/GoogleChrome/lighthouse) — using its **Flow Mode** — with [Playwright](https://playwright.dev/). It helps generate performance reports during your end-to-end testing flows with minimal effort.
 
-📋 **[View Changelog](./CHANGELOG.md)** - See what's new and what's been fixed
+**[View Changelog](./CHANGELOG.md)** - See what's new and what's been fixed
 
 ## Features
 
